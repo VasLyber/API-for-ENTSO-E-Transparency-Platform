@@ -1,0 +1,19 @@
+USER/ADMIN
+
+curl -X POST   -H 'x-observatory-auth: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwIiwiaWF0IjoxNTgzMjMwNzc0LCJleHAiOjE1ODMzMTcxNzR9.IjHhqu3eOw4bpni8vMIpX3u2T66RRvr92xu50JW3K24' http://localhost:8765/energy/api/logout
+
+curl -X POST -H "Content-Type:application/json" http://localhost:8765/energy/api/login -d '{"user_name":"vasilis3", "password":"vasilis10"}'
+
+ADMIN
+
+curl -X PUT -H "Content-Type:application/json" -H 'x-observatory-auth: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE1ODMyMjkwNTEsImV4cCI6MTU4MzMxNTQ1MX0.FJDc06Dmi3Y-1DDUS2Q4jZeNNdK5H25R7EaT4XsIvNM' http://localhost:8765/energy/api/Admin/users/vasilis1 -d '{"user_name":"vasilis"}'
+
+curl -X POST -H "Content-Type:application/json"  -H 'x-observatory-auth: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE1ODMyMjkwNTEsImV4cCI6MTU4MzMxNTQ1MX0.FJDc06Dmi3Y-1DDUS2Q4jZeNNdK5H25R7EaT4XsIvNM' http://localhost:8765/energy/api/Admin/users -d '{"user_name":"vasilis5", "password":"vasilis5","user_quota":6,"user_id":6,"role":"User"}'
+
+curl -X POST -H 'multipart/form-data' -H "application/octet-stream" -H 'x-observatory-auth: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE1ODMyMjkwNTEsImV4cCI6MTU4MzMxNTQ1MX0.FJDc06Dmi3Y-1DDUS2Q4jZeNNdK5H25R7EaT4XsIvNM'  http://localhost:8765/energy/api/Admin/DayAheadTotalLoadForecast
+
+curl -X POST -H 'multipart/form-data' -H "application/octet-stream" -H 'x-observatory-auth:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE1ODMyMjkwNTEsImV4cCI6MTU4MzMxNTQ1MX0.FJDc06Dmi3Y-1DDUS2Q4jZeNNdK5H25R7EaT4XsIvNM'  http://localhost:8765/energy/api/Admin/ActualTotalLoad
+
+curl -X POST -H 'multipart/form-data' -H "application/octet-stream" -H 'x-observatory-auth:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE1ODMyMjkwNTEsImV4cCI6MTU4MzMxNTQ1MX0.FJDc06Dmi3Y-1DDUS2Q4jZeNNdK5H25R7EaT4XsIvNM'  http://localhost:8765/energy/api/Admin/AggregatedGenerationPerType
+
+sequelize-auto -h localhost -d postgres2 -u postgres -x postgres -p 5432  --dialect postgres -o ./model
